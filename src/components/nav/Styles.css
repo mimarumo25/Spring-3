@@ -27,9 +27,13 @@ li{
     list-style: none;
     text-decoration: none;
 }
-li:hover{
-    border: #303336 2px solid;
-   
+.iconos{
+    color: white;
+    font-size: 27px;
+}
+.imgCar{
+    color: white;
+     font-size: 35px;
 }
 .link{
     text-decoration: none;

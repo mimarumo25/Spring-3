@@ -55,7 +55,7 @@ const Login = () => {
                                     errores.password = "Por favor Ingresa tu contraseña";
                                 }
                                 else if (
-                                    !/^(?=.*[A-Za-z])(?=.*\d)[a-zA-Z0-9!@#$%^&*()~¥=_+}{":;'?/>.<,`\- \ | \ [\]]{6,50}$/.test(
+                                    !/^(?=.*[A-Za-z])(?=.*\d)[a-zA-Z0-9!@#$%^&*()~¥=_+}{":;'?/>.<,`\-\ | \ [\]]{6,50}$/.test(
                                         valores.password
                                     )
                                 ) {

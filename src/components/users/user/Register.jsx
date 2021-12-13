@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import logo2 from '../../../asset/amazon-logo2.png'
 import { Formik } from 'formik'
 import { fileUpload } from '../../../helpers/FileUpload'
-import { register, registerEmailPassword } from '../../../actions/registerAction'
+import {  registerEmailPassword } from '../../../actions/registerAction'
 import { useDispatch } from 'react-redux'
 
 
@@ -53,16 +53,13 @@ export const Register = () => {
                                 if (valores.password !== valores.repitPassword) {
                                     errores.repitPassword = "Las contraseñas deben ser iguales"
                                 }
-                                
-
                                 return errores;
                             }}
 
                             onSubmit={(valores, { resetForm }) => {
-                                console.log(valores);
+                                
                                dispatch(registerEmailPassword(valores.names, valores.image, valores.email, valores.password))
-                                resetForm()
-                               
+                                resetForm()                               
                                
                                 
                             }}>

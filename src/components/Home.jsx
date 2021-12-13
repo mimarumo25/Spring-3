@@ -1,7 +1,8 @@
 import React from 'react';
 import Carrusel from './carrucel/Carrusel';
 import {Narbar} from './nav/Narbar'
-import CardProductosHome from './productos/cards/CardProductosHome';
+import Productos from './productos/Productos';
+
 
 const Home = () => {
 
@@ -9,8 +10,7 @@ const Home = () => {
         <div>
            <Narbar/>
            <Carrusel/>
-           <CardProductosHome/>
-
+           <Productos/>
         </div>
     );
 }

@@ -5,7 +5,7 @@ import {
   updateProfile,
 } from "@firebase/auth";
 
-export const register = (names, image, email,password) => {
+export const register = (names,  image, email,password) => {
   return {
     type: types.register,
     payload: {

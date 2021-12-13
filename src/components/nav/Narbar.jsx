@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Container, Dropdown, DropdownButton, Button, FormControl, Form, InputGroup, Nav, Navbar, NavDropdown, Offcanvas } from 'react-bootstrap'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import logo from '../../asset/logo.png'
+import Ubicacion from '../miUbicacion/Ubicacion'
+
 
 export const Narbar = () => {
+  const  user  = useSelector(store => store.login);
+  const [modalShow, setModalShow] = useState(false);
+   const ubicacion =Ubicacion()
+ 
     return (
         <div>
             <div className="containerMenu">
@@ -15,7 +22,9 @@ export const Narbar = () => {
                     </li>
                     <li>
                         <div className="ubicacion">
-                            <p>Hola <span className="ubicacion-logo">Elige tu Ubicación</span></p>
+                           
+                            <p className="identifica">Envio,</p>
+                            <h6 className="identifica"><span className="iconify iconos" data-icon="akar-icons:location" style={{color: "white" }}></span>{ubicacion}</h6>
                         </div>
                     </li>
                     <li className="col-5">
@@ -37,10 +46,13 @@ export const Narbar = () => {
 
                     </li>
                     <li>
-                        <Link to="/login">
-                        <p className="identifica">Hola, idetificate</p>
-                        <h6 className="identifica">Cuenta y Listas</h6>
-                        </Link>
+                    { user.name===undefined ?  ( <Link to="/login">
+                                <p className="identifica">Hola, idetificate</p>
+                                <h6 className="identifica">Cuenta y Listas</h6>
+                                </Link>)
+                                :(<p className="identifica">{user.name}</p>)
+                            } 
+
                     </li>
                     <li>
                         <div className="devoluciones-pedidos">
@@ -49,7 +61,7 @@ export const Narbar = () => {
                     </li>
                     <li>
                         <div className="carrito">
-                            <Link to="">Carrito</Link>
+                            <Link to="/carrito"><span className="iconify imgCar" data-icon="carbon:shopping-cart"></span></Link>
                         </div>
                     </li>
                 </div>
@@ -74,7 +86,13 @@ export const Narbar = () => {
                             placement="start"
                         >
                             <Offcanvas.Header closeButton className="cabeceraOff">
-                                <Offcanvas.Title id="offcanvasNavbarLabel"><Link to="/login"><span className="iconify" data-icon="carbon:user-avatar-filled-alt" data-width="30"></span> Hola, Identificate</Link></Offcanvas.Title>
+                                <Offcanvas.Title id="offcanvasNavbarLabel">
+                                   
+                                    <Link to="/login">
+                                        <span className="iconify" data-icon="carbon:user-avatar-filled-alt" data-width="30"></span>
+                                         Hola, Identificate
+                                    </Link>
+                                </Offcanvas.Title>
                             </Offcanvas.Header>
                             <Offcanvas.Body>
                                 <Nav className="justify-content-end flex-grow-1 pe-3">

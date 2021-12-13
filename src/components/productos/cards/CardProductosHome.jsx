@@ -1,78 +1,51 @@
 import React from 'react'
 import { Card, Button } from 'react-bootstrap'
+import { useDispatch } from 'react-redux'
+
 import { Link } from 'react-router-dom'
+import { carrito } from '../../../actions/actionProduct'
+
 import './stylesProductos.css'
 
-export default function CardProductosHome() {
+export default function CardProductosHome({ product }) {
+    const dispatch = useDispatch()
+
+    const handleCarrito = (data) => {
+      
+        dispatch(carrito((data) => {
+            const carrito = [...data];
+            const existeProducto = carrito.some((item) => item.id === data.id);
+            if (!existeProducto) {
+              return [...carrito, { ...data, cantidad: 1 }];
+            }
+            return carrito.map((item) => {
+              if (item.id === data.id) {
+                const cantidad = item.cantidad || 0;
+                return { ...item, cantidad: cantidad + 1 };
+              }
+              return { ...item };
+            });
+          })) 
+    }
+   
     return (
         <div>
-            <div className=" container-fluid px-5 containerCards">
-                <div className="row row-cols-1 row-cols-sm-2 row-cols-md-4 justify-content-between ">
-                    <Card style={{ width: '18rem' }} className=" mb-2">
-                        <Card.Body>
-                            <Card.Title>Card Title</Card.Title>
-                            <Link to="/details_product">
-                                <div> 
-                                    <Card.Img variant="top" src="https://m.media-amazon.com/images/I/51VgwZsyAQL._AC_UL1001_.jpg" />
-                                </div>
-                            </Link>
-                            <Card.Text>
-                                Some quick example text to build on the card title and make up the bulk of
-                                the card's content.
-                            </Card.Text>
-                            <Button variant="primary">Go somewhere</Button>
-                        </Card.Body>
-                    </Card>
-                    <Card style={{ width: '18rem' }}>
-                        <Card.Body>
-                            <Card.Title>Card Title</Card.Title>
-                            <Link to="/details_product">
-                                <div> 
-                                    <Card.Img variant="top" src="https://m.media-amazon.com/images/I/51VgwZsyAQL._AC_UL1001_.jpg" />
-                                </div>
-                            </Link>
-                            <Card.Text>
-                                Some quick example text to build on the card title and make up the bulk of
-                                the card's content.
-                            </Card.Text>
-                            <Button variant="primary">Go somewhere</Button>
-                        </Card.Body>
-                    </Card>
-                    <Card style={{ width: '18rem' }}>
-                        <Card.Body>
-                            <Card.Title>Card Title</Card.Title>
-                            <Card.Img variant="top" src="https://m.media-amazon.com/images/I/51VgwZsyAQL._AC_UL1001_.jpg" />
-                            <Card.Text>
-                                Some quick example text to build on the card title and make up the bulk of
-                                the card's content.
-                            </Card.Text>
-                            <Button variant="primary">Go somewhere</Button>
-                        </Card.Body>
-                    </Card>
-                    <Card style={{ width: '18rem' }}>
-                        <Card.Body>
-                            <Card.Title>Card Title</Card.Title>
-                            <Card.Img variant="top" src="https://m.media-amazon.com/images/I/51VgwZsyAQL._AC_UL1001_.jpg" />
-                            <Card.Text>
-                                Some quick example text to build on the card title and make up the bulk of
-                                the card's content.
-                            </Card.Text>
-                            <Button variant="primary">Go somewhere</Button>
-                        </Card.Body>
-                    </Card>
-                    <Card style={{ width: '18rem' }}>
-                        <Card.Body>
-                            <Card.Title>Card Title</Card.Title>
-                            <Card.Img variant="top" src="https://m.media-amazon.com/images/I/51VgwZsyAQL._AC_UL1001_.jpg" />
-                            <Card.Text>
-                                Some quick example text to build on the card title and make up the bulk of
-                                the card's content.
-                            </Card.Text>
-                            <Button variant="primary">Go somewhere</Button>
-                        </Card.Body>
-                    </Card>
-                </div>
-            </div>
+
+            <Card style={{ width: '18rem' }}>
+                <Card.Body>
+                    <Link to={`/details_product/${product.id}`}>
+                        <Card.Img variant="top h-75" src={product.foto1} />
+                    </Link>
+                    <Card.Title className='text-center mt-2'>{product.name}</Card.Title>
+                    <div>
+                        <p className='mt-3 text-center fs-4'>Precio:<b > US$ {product.price}</b></p>
+                    </div>
+                    <div className='d-grid'>
+                        <Button variant="primary" onClick={() => { handleCarrito(product) }}>Agregar al carrito</Button>
+                    </div>
+                </Card.Body>
+            </Card>
+
         </div>
     )
 }

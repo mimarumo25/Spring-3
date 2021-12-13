@@ -5,3 +5,27 @@
     
  
 }
+.containerDetalles{
+    padding-top: 5px;
+    width: 96% ;
+    margin: 0 auto;
+}
+.alto{
+    height: 500px;
+}
+
+.img-active:hover {
+    box-shadow: 0 0 10px #fc2133, 0 0 10px #fc2133, 0 0 10px #fc2133;
+}
+.img-active:active {
+    box-shadow: 0 0 10px #fc2133, 0 0 10px #fc2133, 0 0 10px #fc2133;
+}
+.imagenP{
+    max-width: 570px;
+    max-height: 500px;
+    min-width: 400px;
+    min-height: 300px;
+}
+.colorp{
+    color: #AF2913 !important;
+}
