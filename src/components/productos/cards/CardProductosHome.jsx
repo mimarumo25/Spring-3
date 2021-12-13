@@ -12,20 +12,7 @@ export default function CardProductosHome({ product }) {
 
     const handleCarrito = (data) => {
       
-        dispatch(carrito((data) => {
-            const carrito = [...data];
-            const existeProducto = carrito.some((item) => item.id === data.id);
-            if (!existeProducto) {
-              return [...carrito, { ...data, cantidad: 1 }];
-            }
-            return carrito.map((item) => {
-              if (item.id === data.id) {
-                const cantidad = item.cantidad || 0;
-                return { ...item, cantidad: cantidad + 1 };
-              }
-              return { ...item };
-            });
-          })) 
+        dispatch(carrito(data)) 
     }
    
     return (
