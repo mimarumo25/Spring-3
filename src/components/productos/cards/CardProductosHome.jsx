@@ -11,8 +11,7 @@ export default function CardProductosHome({ product }) {
     const dispatch = useDispatch()
 
     const handleCarrito = (data) => {
-      
-        dispatch(carrito(data)) 
+     dispatch(carrito(data))
     }
    
     return (
