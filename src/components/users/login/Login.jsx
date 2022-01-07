@@ -2,7 +2,7 @@ import { Formik } from 'formik';
 import React from 'react';
 import { Card, FloatingLabel, Form } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo2 from '../../../asset/amazon-logo2.png'
 import { loginEmailPassword, loginFacebook, loginGoogle } from '../../../actions/loginAction'
 
@@ -10,14 +10,17 @@ import { loginEmailPassword, loginFacebook, loginGoogle } from '../../../actions
 const Login = () => {
 
     const dispatch = useDispatch()
+    const navegar =useNavigate()
 
     const handleLoginGoogle = () => {
 
         dispatch(loginGoogle())
+        navegar("/")
 
     }
     const handleLoginFacebook = () => {
         dispatch(loginFacebook())
+        navegar("/")
     }
     return (
 
@@ -68,7 +71,7 @@ const Login = () => {
                                 // setenvioformulario(true)
                                 dispatch(loginEmailPassword(valores.email, valores.password))
                                 resetForm()
-                                console.log(valores)
+                                navegar("/")
                                 
                             }}>
                             {({ values, errors, touched, handleSubmit, handleChange, handleBlur }) => (

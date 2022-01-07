@@ -18,7 +18,7 @@ export const searchAsyn = (product) => {
         datos.forEach((docu) => {
             producto.push(docu.data())
         }) 
-        console.log(producto)
+        
         //dispatch(searchSync(producto))
     }
 }
@@ -36,6 +36,7 @@ export const searchSync = (product) => {
 //READ
 
 export const listProductAsync = () => {
+   
     return async (dispatch) => {
 
         const querySnapshot = await getDocs(collection(db, "productosrelacionados"));

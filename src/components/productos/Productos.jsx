@@ -4,7 +4,7 @@ import CardProductosHome from './cards/CardProductosHome';
 
 const Productos = () => {
     const { product } = useSelector((store) => store.product);
-    
+   
     return (
         <div>
             <div className=" container-fluid px-5 containerCards" >

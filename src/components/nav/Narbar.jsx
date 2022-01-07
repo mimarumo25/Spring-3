@@ -16,7 +16,7 @@ export const Narbar = () => {
             <div className="containerMenu">
                 <div className=" menu1">
                     <li>
-                        <Link className="link" to="#">
+                        <Link className="link" to="/">
                             <img src={logo} alt="Logo Amazon" className="imglogo" />
                         </Link>
                     </li>

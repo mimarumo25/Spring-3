@@ -4,6 +4,8 @@ import { Narbar } from '../../nav/Narbar'
 
 export default function Carrito() {
     const { carrito } = useSelector((store) => store.carrito);
+    console.log(carrito);
+    console.log(carrito.find(c=> c.id =="2"));
     return (
         <div>
             <Narbar />

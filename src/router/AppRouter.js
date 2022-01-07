@@ -25,9 +25,8 @@ function App() {
   useEffect(() => {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
-      console.log(user.photoURL)
       if (user?.uid) {
-        dispatch(login(user.uid, user.displayName, user.photoURL));
+        dispatch(login(user.uid, user.displayName));
         setIsLoggedIn(true);
       } else {
         setIsLoggedIn(false);
